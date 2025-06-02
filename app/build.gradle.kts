@@ -30,13 +30,14 @@ checkstyle {
     configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
     isIgnoreFailures = false
 }
-tasks.checkstyleMain {
-    enabled = false
-}
+
 sonar {
     properties {
         property("sonar.projectKey", "Parsifal777_java-project-61")
         property("sonar.organization", "parsifal777")
         property("sonar.host.url", "https://sonarcloud.io")
     }
+}
+tasks.checkstyleMain {
+    enabled = false
 }

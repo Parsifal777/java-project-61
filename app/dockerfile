@@ -14,11 +14,8 @@ RUN gem install rspec:3.13.0 aruba:2.3.0
 # Копирование файлов проекта
 COPY . .
 
-# Даем права на выполнение gradlew
-RUN chmod +x gradlew
+# Даем права на выполнение и готовим структуру
+RUN chmod +x gradlew && \
+    ./gradlew --version
 
-# Создаем структуру каталогов и перемещаем файлы
-RUN mkdir -p code/app && \
-    mv src build.gradle.kts settings.gradle.kts gradlew* code/app/
-
-WORKDIR /project/code/app
+WORKDIR /project
