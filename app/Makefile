@@ -11,3 +11,4 @@ run-dist:
 run-dist-win:
 	.\gradlew.bat installDist
 	.\build\install\app\bin\app.bat
+
