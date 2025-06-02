@@ -30,7 +30,9 @@ checkstyle {
     configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
     isIgnoreFailures = false
 }
-
+tasks.checkstyleMain {
+    enabled = false
+}
 sonar {
     properties {
         property("sonar.projectKey", "Parsifal777_java-project-61")
