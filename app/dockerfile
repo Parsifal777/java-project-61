@@ -17,4 +17,5 @@ COPY . .
 # Даем права на выполнение gradlew
 RUN chmod +x gradlew
 
-WORKDIR /project/code/app
+# Оставляем WORKDIR как /project (корень проекта)
+# Все команды будут выполняться относительно этой директории
