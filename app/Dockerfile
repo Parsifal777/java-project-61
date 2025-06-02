@@ -1,23 +1,22 @@
-# Используем официальный образ Gradle с JDK 21
 FROM gradle:8.13.0-jdk21
 
-# Устанавливаем необходимые пакеты
 RUN apt-get update && \
     apt-get install -yq make ruby ruby-dev build-essential && \
     rm -rf /var/lib/apt/lists/*
 
-# Устанавливаем необходимые Ruby gem
 RUN gem install contracts:0.17
 RUN gem install rspec:3.13.0 aruba:2.3.0
 
-# Создаем рабочую директорию
 WORKDIR /project
 
-# Копируем все файлы проекта
-COPY . .
+# Копируем только необходимые файлы с сохранением прав
+COPY --chmod=755 ./app/gradlew ./app/gradlew
+COPY ./app/gradle ./app/gradle
+COPY ./app/gradlew.bat ./app/
+COPY ./app/build.gradle ./app/
+COPY ./app/src ./app/src
 
-# Даем права на выполнение gradlew
-RUN chmod +x ./app/gradlew
-
-# Проверяем что Gradle работает
-RUN cd app && ./gradlew --version
+# Явно устанавливаем права (дополнительная страховка)
+RUN chmod +x /project/app/gradlew && \
+    cd /project/app && \
+    ./gradlew --version
