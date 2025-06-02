@@ -45,5 +45,6 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Добавлено для интеграции с GitHub
-        run: ./gradlew build sonar --info
+        run: |
+          chmod +x gradlew
+          ./gradlew clean install sonar --info
