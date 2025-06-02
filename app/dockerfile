@@ -1,0 +1,20 @@
+FROM gradle:8.13.0-jdk21
+
+WORKDIR /project
+
+# Установка зависимостей
+RUN apt-get update && \
+    apt-get install -yq make ruby ruby-dev build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
+# Установка Ruby gems
+RUN gem install contracts:0.17
+RUN gem install rspec:3.13.0 aruba:2.3.0
+
+# Копирование файлов проекта
+COPY . .
+
+# Даем права на выполнение gradlew
+RUN chmod +x gradlew
+
+WORKDIR /project/code/app
