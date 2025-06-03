@@ -1,5 +1,4 @@
 plugins {
-    id("java")
     id("checkstyle")
     application
     id("org.sonarqube") version "6.2.0.5505"
@@ -15,10 +14,6 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-}
-
-tasks.test {
-    useJUnitPlatform()
 }
 
 application {

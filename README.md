@@ -1,3 +1,5 @@
+# Игры разума:
+**Этот проект представляет собой консольное приложение на джава,в котором реализовано несколько игр. В процессе разработки я использовал стандартные функции и библиотеки Java. Чтобы запустить проекст, сначал нужно собрать его в исполняемый файл, затем запустить проект из нужной директории.**
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Parsifal777/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Parsifal777/java-project-61/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Parsifal777_java-project-61&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Parsifal777_java-project-61)

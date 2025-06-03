@@ -1,23 +1,14 @@
 package hexlet.code;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Progression {
     private static final Random RANDOM = new Random();
+    private static final String GAME_DESCRIPTION = "What number is missing in the progression?";
+    private static final int ROUNDS_COUNT = 3;
 
-    public static void progGame() {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String userName = scanner.nextLine();
-        System.out.println("Hello, " + userName + "!");
-        System.out.println("What number is missing in the progression?");
-
-        int correctAnswers = 0;
-        final int rounds = 3;
-
-        for (int j = 0; j < rounds; j++) {
+    public static String[][] getProgGame() {
+        String[][] gameData = new String[ROUNDS_COUNT][2];
+        for (int j = 0; j < ROUNDS_COUNT; j++) {
             int number = RANDOM.nextInt(10);
             int[] progression = calculate();
             int correctAnswer = progression[number];
@@ -30,24 +21,11 @@ public class Progression {
                 }
             }
             String question = questionBuilder.toString().trim();
-
-            System.out.println("Question: " + question);
-            System.out.print("Your answer: ");
-            String userAnswer = scanner.nextLine();
-            if (userAnswer.equals(String.valueOf(correctAnswer))) {
-                System.out.println("Correct!");
-                correctAnswers++;
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again, " + userName + "!");
-                return;
-            }
+            gameData[j][0] = question;
+            gameData[j][1] = Integer.toString(correctAnswer);
         }
-        if (correctAnswers == rounds) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+    return gameData;
     }
-
     private static int[] calculate() {
         int length = 10;
         int[] progression = new int[length];
@@ -58,5 +36,8 @@ public class Progression {
             progression[i] = progression[i-1] + step;
         }
         return progression;
+    }
+    public static void ProgGame() {
+        Engine.runGame(GAME_DESCRIPTION, getProgGame());
     }
 }
