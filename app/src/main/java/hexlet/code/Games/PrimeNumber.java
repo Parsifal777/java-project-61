@@ -1,16 +1,14 @@
-package hexlet.code;
-import java.util.Random;
+package hexlet.code.Games;
+import hexlet.code.Utils;
 
 public class PrimeNumber {
     private static final String GAME_DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    private static final int ROUNDS_COUNT = 3;
 
     public static String[][] getPrimeGame() {
-        Random random = new Random();
-        String[][] gameData = new String[ROUNDS_COUNT][2];
+        String[][] gameData = new String[Engine.ROUNDS_COUNT][2];
 
-        for (int i = 0; i < ROUNDS_COUNT; i++) {
-            int number = random.nextInt(100);
+        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
+            int number = Utils.getRandNumber(1, 100);
             gameData[i][0] = Integer.toString(number);
             gameData[i][1] = isPrime(number) ? "yes" : "no";
         }

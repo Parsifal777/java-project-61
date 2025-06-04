@@ -1,8 +1,8 @@
-package hexlet.code;
+package hexlet.code.Games;
 import java.util.Scanner;
 
 public class Engine {
-    private static final int ROUNDS_COUNT = 3;
+    public static final int ROUNDS_COUNT = 3;
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void runGame(String gameDescription, String[][] gameData) {

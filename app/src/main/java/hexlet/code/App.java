@@ -1,40 +1,31 @@
 package hexlet.code;
+import hexlet.code.Games.*;
+
 import java.util.Scanner;
 
 public class App {
-    private static Scanner mainScanner = new Scanner(System.in);
+    private static final Scanner mainScanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         printMenu();
-        while (true) {
-            try {
-                System.out.print("Your choice: ");
-                String input = mainScanner.nextLine().trim();
-                if (input.isEmpty()) {
-                    continue;
-                }
-                int choice = Integer.parseInt(input);
-
-                switch (choice) {
-                    case 1 -> Cli.greetUser();
-                    case 2 -> Even.evenGame();
-                    case 3 -> Calc.calcGame();
-                    case 4 -> NOD.nodGame();
-                    case 5 -> Progression.ProgGame();
-                    case 6 -> PrimeNumber.PrimeGame();
-                    case 0 -> {
-                        System.out.println("Goodbye!");
-                        return;
-                    }
-                    default -> System.out.println("Unknown command, try again!");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Please enter a valid number!");
-            } catch (Exception e) {
-                System.out.println("An unexpected error occurred: " + e.getMessage());
-                e.printStackTrace();
-            }
+        System.out.print("Your choice: ");
+        String input = mainScanner.nextLine().trim();
+        if (input.isEmpty()) {
+            return;
+        }
+        int choice = Integer.parseInt(input);
+        switch (choice) {
+            case 1 -> Cli.greetUser();
+            case 2 -> Even.evenGame();
+            case 3 -> Calc.calcGame();
+            case 4 -> NOD.nodGame();
+            case 5 -> Progression.ProgGame();
+            case 6 -> PrimeNumber.PrimeGame();
+            case 0 -> System.out.println("Goodbye!");
+            default -> System.out.println("Unknown command, try again!");
         }
     }
+
     private static void printMenu() {
         System.out.println("""
             Please enter the game number and press Enter

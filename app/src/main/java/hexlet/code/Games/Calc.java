@@ -1,19 +1,17 @@
-package hexlet.code;
-import java.util.Random;
+package hexlet.code.Games;
+import hexlet.code.Utils;
 
 public class Calc {
     private static final String GAME_DESCRIPTION = "What is the result of the expression?";
     private static final String[] OPERATIONS = {"+", "-", "*"};
-    private static final int ROUNDS_COUNT = 3;
 
     public static String[][] getGameData() {
-        Random random = new Random();
-        String[][] gameData = new String[ROUNDS_COUNT][2];
+        String[][] gameData = new String[Engine.ROUNDS_COUNT][2];
 
-        for (int i = 0; i < ROUNDS_COUNT; i++) {
-            int a = random.nextInt(100) + 1;
-            int b = random.nextInt(100) + 1;
-            String operation = OPERATIONS[random.nextInt(OPERATIONS.length)];
+        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
+            int a = Utils.getRandNumber(1, 100);
+            int b = Utils.getRandNumber(1, 100);
+            String operation = OPERATIONS[Utils.getRandNumber(0, OPERATIONS.length - 1)];
             gameData[i][0] = a + " " + operation + " " + b;
             gameData[i][1] = Integer.toString(calculate(a, b, operation));
         }
