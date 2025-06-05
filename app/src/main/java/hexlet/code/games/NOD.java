@@ -1,4 +1,5 @@
-package hexlet.code.Games;
+package hexlet.code.games;
+import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class NOD {
@@ -13,8 +14,10 @@ public class NOD {
             gameData[i][0] = number1 + " " + number2;
             gameData[i][1] = Integer.toString(correctAnswer);
         }
+
     return gameData;
     }
+
     private static int gcd(int number1, int number2) {
         int a = number1;
         int b = number2;
@@ -23,8 +26,10 @@ public class NOD {
             b = a % b;
             a = temp;
         }
+
     return a;
     }
+
     public static void nodGame() {
         Engine.runGame(GAME_DESCRIPTION, getNodGame());
     }

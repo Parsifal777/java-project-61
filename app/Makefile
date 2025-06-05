@@ -1,15 +1,19 @@
-.PHONY: build test run-dist
+SRC_FILES := $(shell find src -type f -name '*.java')
+BUILD_DIR := build
 
-build:
+.PHONY: test run-dist clean
+
+build: $(SRC_FILES)
 	chmod +x gradlew
 	./gradlew build
 
-test:
-	chmod +x gradlew
+test: build
 	./gradlew test
 
-run-dist:
-	chmod +x gradlew
-	./gradlew installDist || bash gradlew installDist
-	chmod +x build/install/app/bin/app
-	./build/install/app/bin/app
+run-dist: build
+	./gradlew installDist
+	chmod +x $(BUILD_DIR)/install/app/bin/app
+	./$(BUILD_DIR)/install/app/bin/app
+
+clean:
+	./gradlew clean
