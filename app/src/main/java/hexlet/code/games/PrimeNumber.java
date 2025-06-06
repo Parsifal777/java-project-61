@@ -26,7 +26,7 @@ public class PrimeNumber {
         }
         return true;
     }
-    public static void PrimeGame() {
+    public static void primeGame() {
         Engine.runGame(GAME_DESCRIPTION, getPrimeGame());
     }
 }

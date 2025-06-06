@@ -34,4 +34,3 @@ public class NOD {
         Engine.runGame(GAME_DESCRIPTION, getNodGame());
     }
 }
-

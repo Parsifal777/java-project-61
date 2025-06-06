@@ -19,8 +19,8 @@ public class App {
             case 2 -> Even.evenGame();
             case 3 -> Calc.calcGame();
             case 4 -> NOD.nodGame();
-            case 5 -> Progression.ProgGame();
-            case 6 -> PrimeNumber.PrimeGame();
+            case 5 -> Progression.progGame();
+            case 6 -> PrimeNumber.primeGame();
             case 0 -> System.out.println("Goodbye!");
             default -> System.out.println("Unknown command, try again!");
         }
