@@ -16,20 +16,27 @@ public class App {
     private static final int GCD_OPTION = 4;
     private static final int PROGRESSION_OPTION = 5;
     private static final int PRIME_OPTION = 6;
-    private static final Scanner MAIN_SCANNER = new Scanner(System.in);
+    private static final int EXIT_OPTION = 0;
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Please enter the game number and press Enter.");
-        System.out.println(GREET_OPTION + " - Greet");
-        System.out.println(EVEN_OPTION + " - Even");
-        System.out.println(CALC_OPTION + " - Calc");
-        System.out.println(GCD_OPTION + " - GCD");
-        System.out.println(PROGRESSION_OPTION + " - Progression");
-        System.out.println(PRIME_OPTION + " - Prime");
-        System.out.println("0 - Exit");
-        System.out.print("Your choice: ");
+        printMenu();
 
-        int gameNumber = MAIN_SCANNER.nextInt();
+        if (!SCANNER.hasNextInt()) {
+            System.out.println("Error: Please enter a number between "
+                    + EXIT_OPTION + " and " + PRIME_OPTION);
+            return;
+        }
+
+        int gameNumber = SCANNER.nextInt();
+        SCANNER.nextLine(); // Очистка буфера
+
+        if (gameNumber < EXIT_OPTION || gameNumber > PRIME_OPTION) {
+            System.out.println("Error: Invalid game number '" + gameNumber
+                    + "'. Please choose between " + EXIT_OPTION
+                    + " and " + PRIME_OPTION);
+            return;
+        }
 
         switch (gameNumber) {
             case GREET_OPTION -> Cli.greetUser();
@@ -38,8 +45,22 @@ public class App {
             case GCD_OPTION -> NOD.nodGame();
             case PROGRESSION_OPTION -> Progression.progGame();
             case PRIME_OPTION -> PrimeNumber.primeGame();
-            default -> System.out.println("Goodbye!");
+            case EXIT_OPTION -> System.out.println("Goodbye!");
+            default -> System.out.println("Unexpected error");
         }
-        MAIN_SCANNER.close();
+
+        SCANNER.close();
+    }
+
+    private static void printMenu() {
+        System.out.println("Please enter the game number and press Enter.");
+        System.out.println(GREET_OPTION + " - Greet");
+        System.out.println(EVEN_OPTION + " - Even");
+        System.out.println(CALC_OPTION + " - Calc");
+        System.out.println(GCD_OPTION + " - GCD");
+        System.out.println(PROGRESSION_OPTION + " - Progression");
+        System.out.println(PRIME_OPTION + " - Prime");
+        System.out.println(EXIT_OPTION + " - Exit");
+        System.out.print("Your choice: ");
     }
 }
