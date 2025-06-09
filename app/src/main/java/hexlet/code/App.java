@@ -23,13 +23,15 @@ public class App {
         printMenu();
 
         if (!SCANNER.hasNextInt()) {
-            System.out.println("Error: Please enter a number between "
-                    + EXIT_OPTION + " and " + PRIME_OPTION);
+            String userInput = SCANNER.nextLine();
+            System.out.println("Error: Expected a number between "
+                    + EXIT_OPTION + " and " + PRIME_OPTION
+                    + ", but got '" + userInput + "'");
             return;
         }
 
         int gameNumber = SCANNER.nextInt();
-        SCANNER.nextLine(); // Очистка буфера
+        SCANNER.nextLine();
 
         if (gameNumber < EXIT_OPTION || gameNumber > PRIME_OPTION) {
             System.out.println("Error: Invalid game number '" + gameNumber
@@ -46,7 +48,7 @@ public class App {
             case PROGRESSION_OPTION -> Progression.progGame();
             case PRIME_OPTION -> PrimeNumber.primeGame();
             case EXIT_OPTION -> System.out.println("Goodbye!");
-            default -> System.out.println("Unexpected error");
+            default -> System.out.println("Unexpected error for input: " + gameNumber);
         }
 
         SCANNER.close();
